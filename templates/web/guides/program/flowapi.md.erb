@@ -59,6 +59,19 @@ weaknesses in the underlying vendor API - IG-XL doesn't provide a native !enable
 control, however you can write your flow as if it does and Origen will generate
 the equivalent logic.
 
+~~~
+
+On SmarTest based testers the flow control variables are automatically upper-cased, but can be controlled:
+
+~~~ruby
+# Executes a test based on the flag @VREG_CZ
+para :vreg_meas, softbin: 107, cz: true, if_enable: "vreg_cz"
+
+# In order to create or test for a mixed-case flag, prepend the name with a $
+# Executes a test based on the flag @Vreg_CZ
+para :vreg_meas, softbin: 107, cz: true, if_enable: "$Vreg_CZ"
+~~~
+
 #### Execution Based on a Previous Test
 
 The following methods are available to describe these cases:
